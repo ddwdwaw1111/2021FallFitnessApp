@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" class="has-navbar-fixed-top">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="../imgs/favicon.ico" type="image/x-icon">
+    <title>Health Panel</title>
+
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-full">
+                    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+                        <div class="navbar-brand">
+                            <div class="navbar-item has-background-grey-light has-text-weight-semibold">
+                                Zihao's Fitness Tracker Logo
+                            </div>
+
+                            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                            </a>
+                        </div>
+
+                        <div id="navbarBasicExample" class="navbar-menu">
+                            <div class="navbar-start">
+                                <a class="navbar-item" href="./discover.html">
+                      Home
+                    </a>
+
+                                <a class="navbar-item">
+                             New Post
+                        </a>
+
+                                <div class="navbar-item has-dropdown is-hoverable">
+                                    <a class="navbar-link">
+                        More
+                      </a>
+
+                                    <div class="navbar-dropdown">
+                                        <a class="navbar-item">
+                          About
+                        </a>
+                                        <a class="navbar-item">
+                          Contact
+                        </a>
+                                        <hr class="navbar-divider">
+                                        <a class="navbar-item">
+                          Report an issue
+                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="navbar-end">
+                                <div class="navbar-item">
+                                    <div class="buttons">
+                                        <a class="button is-primary" href="./profile.html">
+                                            <strong>My Profile</strong>
+                                        </a>
+                                        <a class="button is-light" href="./login.html">
+                          Log out
+                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="column is-full has-text-centered">
+                    <div class="box">
+                        <div class="columns is-multiline">
+                            <div class="column is-full">
+
+                                <figure class="image is-inline-block">
+                                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <p><strong>Welcome,</strong> Username</p>
+                            <a aria-label="report">
+                                <span class="icon is-small">
+                      <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    </span>
+                            </a>
+
+                        </div>
+
+                        <div class="column">
+                            <div><strong>Height : </strong> 5'11 feet
+                            </div>
+                        </div>
+                        <div class="column">
+                            <p><strong>Weight: </strong> 200 lb</p>
+                        </div>
+                        <div class="column">
+                            <p><strong>Age: </strong> 18</p>
+                        </div>
+                        <div class="column">
+                            <p><strong>Sex: </strong> Male</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="column is-full has-text-centered">
+                    <span class="title">Exercise Log</span>
+                </div>
+                <div class="column is-full">
+                    <div class="card has-text-centered">
+                        <table class="table is-inline-block">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Working time</th>
+                                    <th>Working type</th>
+                                    <th>calorie burned</th>
+                                    <th>calorie cosumed</th>
+                                    <th>weight(lb)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>01/01/2021</th>
+                                    <td>45:00</td>
+                                    <td>Running</td>
+                                    <td>400 cal</td>
+                                    <td>2000 cal</td>
+                                    <td>140 lb</td>
+                                    <td><button class="button is-small is-black">edit </button></td>
+                                </tr>
+                                <tr>
+                                    <th>01/01/2021</th>
+                                    <td>45:00</td>
+                                    <td>Running</td>
+                                    <td>400 cal</td>
+                                    <td>2000 cal</td>
+                                    <td>140 lb</td>
+                                    <td><button class="button is-small is-black">edit </button></td>
+                                </tr>
+                                <tr>
+                                    <th>01/01/2021</th>
+                                    <td>45:00</td>
+                                    <td>Running</td>
+                                    <td>400 cal</td>
+                                    <td>2000 cal</td>
+                                    <td>140 lb</td>
+                                    <td><button class="button is-small is-black">edit </button></td>
+                                </tr>
+                                <tr>
+                                    <th>01/01/2021</th>
+                                    <td>45:00</td>
+                                    <td>Running</td>
+                                    <td>400 cal</td>
+                                    <td>2000 cal</td>
+                                    <td>140 lb</td>
+                                    <td><button class="button is-small is-black">edit </button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="column is-full">
+                            <button class="button is-black">Add New Log </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-full has-text-centered">
+                    <span class="title">Weight Tracker</span>
+                </div>
+                <div class="column is-full">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        </div>
+        </div>
+
+
+    </section>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Fitness Tracker</strong> by <a href="www.corgi4ever.com">Zihao Wang</a>.
+            </p>
+            <div class="columns">
+                <div class="column">
+                    Send feedback
+                </div>
+                <div class="column">
+                    Privacy
+                </div>
+                <div class="column">
+                    Terms
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            datasets: [{
+                data: [140, 139, 140, 139, 139.5, 139.8, 138],
+                label: "Weight",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            }]
+        },
+    });
+</script>
+
+</html>
