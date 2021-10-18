@@ -33,7 +33,7 @@
                 <div class="box">
                     <div class="columns is-multiline">
                         <div class=" column is-full has-text-centered">
-                            <router-link to="/login"> Back to login</router-link>
+                            <router-link to="/"> Back to login</router-link>
                         </div>
                         <div class=" column is-full is-gapless has-text-centered">
                             <router-link to="/signup"> Sign Up</router-link>

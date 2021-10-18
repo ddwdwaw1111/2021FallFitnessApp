@@ -3,6 +3,10 @@
         <div class="container">
             <div class="column is-full has-text-centered">
                 <h1 class="title ">Login</h1>
+                <h2>
+                    username: @zihao
+                    password: password
+                </h2>
             </div>
 
             <div class="column is-one-third is-offset-one-third ">
