@@ -8,66 +8,78 @@
                                 Zihao's Fitness Tracker Logo
                             </div>
 
-                            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                            </a>
-                        </div>
+                             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" :class="{'is-active': isActive }" @click="isActive = !isActive" >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
 
-                        <div id="navbarBasicExample" class="navbar-menu">
-                            <div class="navbar-start">
-                                <a class="navbar-item" href="./healthPanel.html">
-                      Health Panel
-                    </a>
+  <div class="navbar-menu " :class="{'is-active': isActive }">
+    <div class="navbar-start" v-if="Session.user">
+      <!-- <router-link class="navbar-item is-tab" to="/" active-class="is-active" >
+        Home
+      </router-link> -->
 
-                                <a class="navbar-item">
-                             New Post
-                        </a>
+      <router-link class="navbar-item is-tab" to="/discover" active-class="is-active" >
+        Discover
+      </router-link>
 
-                                <div class="navbar-item has-dropdown is-hoverable">
-                                    <a class="navbar-link">
-                        More
-                      </a>
+      <router-link class="navbar-item is-tab" to="/healthpanel" active-class="is-active" >
+        HealthPanel
+      </router-link>
 
-                                    <div class="navbar-dropdown">
-                                        <a class="navbar-item">
-                          About
-                        </a>
-                                        <a class="navbar-item">
-                          Contact
-                        </a>
-                                        <hr class="navbar-divider">
-                                        <a class="navbar-item">
-                          Report an issue
-                        </a>
-                                    </div>
-                                </div>
-                            </div>
+      <!-- <div class="navbar-item has-dropdown is-hoverable" >
+        <a class="navbar-link" >
+          More
+        </a>
 
-                            <div class="navbar-end">
-                                <div class="navbar-item">
-                                    <div class="buttons">
-                                        <a class="button is-primary" href="./profile.html">
-                                            <strong>My Profile</strong>
-                                        </a>
-                                        <a class="button is-light" href="login.html">
-                          Log out
-                        </a>
-                                    </div>
-                                </div>
-                            </div>
+        <div class="navbar-dropdown">
+          <router-link class="navbar-item is-tab" to="about" active-class="is-active">
+            About
+          </router-link>
+          <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div> -->
+    </div>
+        <!-- <div class="navbar-item is-tab">
+          <strong>Welcome,Username</strong> 
+          </div> -->
+        <div class="navbar-end">
+        <login-badge />
+    </div>
                         </div>
                     </nav>
                 </div>
 </section>
+
 </div>
 
 </template>
 
 <script>
+import Session from "../services/session"
+import LoginBadge from './LoginBadge';
 export default {
-    name:'NavBar'
+    name:'NavBar',
+     data(){
+        return {
+            isActive: false,
+            Session
+        }
+    },
+    components: {
+        LoginBadge,
+    }
 }
 </script>
 

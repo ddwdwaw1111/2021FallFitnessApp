@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" class="has-navbar-fixed-top">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="icon" href="../imgs/favicon.ico" type="image/x-icon">
-    <title>Fitness Tracker Home</title>
-
-
-</head>
-
-<body>
-    <section class="section">
+<template>
+      <section class="section">
         <div class="container">
             <div class="columns is-multiline">
                 <div class="column is-full has-text-centered">
@@ -241,32 +225,19 @@
                     </div>
                 </div>
             </div>
-
-        </div>
         </div>
 
 
     </section>
+</template>
 
-    <footer class="footer">
-        <div class="content has-text-centered">
-            <p>
-                <strong>Fitness Tracker</strong> by <a href="www.corgi4ever.com">Zihao Wang</a>.
-            </p>
-            <div class="columns">
-                <div class="column">
-                    Send feedback
-                </div>
-                <div class="column">
-                    Privacy
-                </div>
-                <div class="column">
-                    Terms
-                </div>
-            </div>
-        </div>
-    </footer>
+<script>
 
-</body>
+export default {
+    name:'Discover'
+}
+</script>
 
-</html>
+<style>
+
+</style>

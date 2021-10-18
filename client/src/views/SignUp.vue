@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <title>SignUp</title>
-    <style>
-        body {
-            background-color: rgb(250, 250, 250);
-            background-size: cover;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="container">
+<template>
+      <div class="container">
         <section class="section">
             <div class="container">
                 <div class="column is-full has-text-centered">
@@ -70,7 +51,7 @@
                 <div class="column is-one-third is-offset-one-third">
                     <div class="box">
                         <div class=" column is-full has-text-centered">
-                            <a href="./login.html"> Back To Login Page</a>
+                            <router-link to="/"> Back To Login Page</router-link>
                         </div>
                     </div>
                 </div>
@@ -80,8 +61,17 @@
         <section class=" hero is-fullheight">
         </section>
     </div>
+</template>
 
+<script>
+export default {
+    name: "SignUp"
+}
+</script>
 
-</body>
-
-</html>
+<style>
+ body {
+            background-color: rgb(250, 250, 250);
+            background-size: cover;
+        }
+</style>
