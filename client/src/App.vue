@@ -4,6 +4,7 @@
     <NavBar />
   </div>
   <router-view/>
+  
   <Footer />
 
 
