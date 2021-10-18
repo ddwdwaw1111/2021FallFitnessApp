@@ -225,7 +225,7 @@
                             </div>
                         </div>
                                                 <div class="column is-full">
-                            <button class="has-text-weight-bold button "> Log Out</button>
+                            <button class="has-text-weight-bold button " @submit.prevent="logout()"> Log Out</button>
                             <div class="modal">
                                 <div class="modal-background"></div>
                                 <div class="modal-content">
@@ -247,8 +247,21 @@
 </template>
 
 <script>
+import Session from '../services/session';
+
 export default {
-    name:'AccountManage'
+    name:'AccountManage',
+        data (){
+        return ({ 
+            Session
+        })
+    },
+    methods: {
+        logout(){
+            console.log('log out');
+            this.Session.Logout();
+        }
+    }
 }
 </script>
 

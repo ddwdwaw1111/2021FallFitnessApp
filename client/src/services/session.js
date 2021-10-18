@@ -16,6 +16,9 @@ const session = {
     }
 };
 
+export function Logout() {
+    session.user == null
+}
 export default session;
 
 //export function
