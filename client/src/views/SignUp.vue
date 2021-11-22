@@ -3,24 +3,30 @@
         <section class="section">
             <div class="container">
                 <div class="column is-full has-text-centered">
-                    <h1 class="title ">Sign Up</h1>
+                    <h1 class="title ">Register</h1>
                 </div>
                 <div class="column is-one-third is-offset-one-third">
-                    <div class="box">
+                    <form class="box" @submit.prevent="register()">
+
                         <div class="field">
-                            <p class="control has-icons-left has-icons-right">
-                                <input class="input" type="email" placeholder="Email">
-                                <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-              </span>
-                                <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-              </span>
+                            <p class="control">
+                                <input class="input" type="firstName" v-model="user.firstName" placeholder="First name">
+                            </p>
+                        </div>
+                        
+                        <div class="field">
+                            <p class="control">
+                                <input class="input" type="lastName" v-model="user.lastName" placeholder="Last name">
+                            </p>
+                        </div>
+                                                <div class="field">
+                            <p class="control">
+                                <input class="input" type="email" v-model="user.emails" placeholder="Email ">
                             </p>
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="username" placeholder="Username">
+                                <input class="input" type="username" v-model="user.handle" placeholder="Username">
                                 <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
               </span>
@@ -28,7 +34,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="Password">
+                                <input class="input" type="password" v-model="user.password" placeholder="Password">
                                 <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
               </span>
@@ -36,42 +42,66 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="Repeat Password">
+                                <input class="input" type="password" v-model="cpassword" placeholder="Confirm Password">
                                 <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
                             </p>
                         </div>
 
                         <div class="column is-full has-text-centered">
-                            <button class="button is-black is-centered">
+                            <button type="submit" class="button is-black is-centered">
                         Sign Up
                     </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
-                <div class="column is-one-third is-offset-one-third">
-                    <div class="box">
-                        <div class=" column is-full has-text-centered">
-                            <router-link to="/"> Back To Login Page</router-link>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
-        <section class=" hero is-fullheight">
-        </section>
+        <Footer />
+
     </div>
 </template>
 
 <script>
+
+import Session from "../services/session";
+import Footer from '../components/Footer.vue';
 export default {
-    name: "SignUp"
+  components: { Footer },
+    name: "SignUp",
+    data: () => {
+        return {
+        Session,
+        cpassword : '',
+        user:{
+        "firstName": '',
+        "lastName": '',
+        "handle": '',
+        "pic": 'https://bulma.io/images/placeholders/128x128.png',
+        "password": "",
+        "isAdmin": false,
+        "emails": [
+            ""
+        ],
+        "following": [{}]
+        },      
+        }
+    },
+    methods: {
+    register() {
+        if(this.user.password !== this.cpassword)
+        {
+            alert("Password does not match")
+        }
+        else
+        {
+                  this.Session.Register(this.user);
+        }
+
+    }
+    }
 }
 </script>
 
 <style>
- body {
-            background-color: rgb(250, 250, 250);
-            background-size: cover;
-        }
+
 </style>

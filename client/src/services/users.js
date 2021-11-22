@@ -20,3 +20,8 @@ export function Delete(user_id) {
 export function Login(handle, password){
     return api('users/login', { handle, password });
 }
+
+export function Register(user)
+{
+    return api('users/register',{user})
+}

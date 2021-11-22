@@ -6,8 +6,16 @@ import HealthPanel from '../views/HealthPanel.vue'
 import ForgetPassword from '../views/ForgetPassword.vue'
 import AccountManage from '../views/AccountManage.vue'
 import Discover from '../views/Discover.vue'
-const routes = [{
-    path: '/',
+const routes = [
+    {
+        path: '/',
+        name: 'Home Page',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: Login
+    },{
+    path: '/login',
     name: 'Login',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route

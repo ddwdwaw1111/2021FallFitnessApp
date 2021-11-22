@@ -1,11 +1,23 @@
 import router from "../router";
-import { Login } from "./users";
+import { Login, Register } from "./users";
 import { NotificationProgrammatic } from "@oruga-ui/oruga-next/dist/esm/notification";
 
 const session = {
     user: null,
     messages: [],       // {text: string, type: string }
-    toRoute: '/feed',
+    toRoute: '/Discover',
+    async Register(user){
+
+        try {
+            const response = await Register(user)
+            console.log(response)
+            if(typeof(response) === "object")
+            router.push(this.toRoute);
+            
+        } catch (error) {
+            this.Error(error);
+        }
+    }, 
     async Login(handle, password){
 
         try {
@@ -15,6 +27,15 @@ const session = {
     
             router.push(this.toRoute);
                 
+        } catch (error) {
+            this.Error(error);
+        }
+    },
+    async Logout(){
+
+        try {
+            this.user = null
+            
         } catch (error) {
             this.Error(error);
         }

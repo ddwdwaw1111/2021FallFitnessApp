@@ -1,5 +1,5 @@
 <template>
-    <section class="section no-">
+    <section class="section">
       <footer class="footer">
         <div class="content has-text-centered">
             <p>
@@ -28,5 +28,8 @@ export default {
 </script>
 
 <style>
-
+    .footer
+    {
+        border-top: black 1px solid;
+    }
 </style>

@@ -1,19 +1,9 @@
 <template>
   <div class="section">
-      <h1 class="title"> Feed Page </h1>
+    <h1 class="title has-text-centered"> Share With Your Friend </h1>
       
       <div class="columns">
-
-          <!--
-          <div class="column">
-              <div class="card">
-                  <div class="card-content">
-                      {{newPost}}
-                  </div>
-              </div>
-          </div>
-            -->
-        <div class="column is-half is-offset-one-quarter">
+        <div class="column">
 
             <post-edit :new-post="newPost" @add="add()" />
 
@@ -23,9 +13,7 @@
 
         </div>
 
-        <div class="column">
             <post :post="newPost" />
-        </div>
       </div>
 
 

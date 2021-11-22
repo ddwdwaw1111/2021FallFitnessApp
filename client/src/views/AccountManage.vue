@@ -225,7 +225,7 @@
                             </div>
                         </div>
                                                 <div class="column is-full">
-                            <button class="has-text-weight-bold button " @submit.prevent="logout()"> Log Out</button>
+                            <button class="has-text-weight-bold button " @click="logout()"> Log Out</button>
                             <div class="modal">
                                 <div class="modal-background"></div>
                                 <div class="modal-content">
@@ -247,6 +247,7 @@
 </template>
 
 <script>
+
 import Session from '../services/session';
 
 export default {
@@ -259,6 +260,7 @@ export default {
     methods: {
         logout(){
             console.log('log out');
+            this.$router.push('/login');
             this.Session.Logout();
         }
     }
