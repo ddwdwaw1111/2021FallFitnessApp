@@ -79,10 +79,18 @@ export default {
         "pic": 'https://bulma.io/images/placeholders/128x128.png',
         "password": "",
         "isAdmin": false,
+        "country": 'Unknown',
         "emails": [
             ""
         ],
-        "following": [{}]
+        "following": [{}],
+        "healthProfile":
+            {
+                "Height":"0",
+                "Weight":"0",
+                "Age":"0",
+                "Sex": "Unknown"
+            }
         },      
         }
     },

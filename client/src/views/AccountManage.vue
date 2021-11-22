@@ -8,12 +8,12 @@
                         <div class="column is-full">
 
                             <figure class="image is-inline-block">
-                                <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                                <img class="is-rounded" src={{Session.user}}>
                             </figure>
                         </div>
                     </div>
                     <div class="column">
-                        <p><strong>Welcome,</strong> Username</p>
+                        <p><strong>Welcome,</strong> {{Session.user.firstName}} {{Session.user.lastName}}</p>
                         <a aria-label="report">
                             <span class="icon is-small">
                   <i class="fas fa-pencil-alt" aria-hidden="true"></i>
@@ -23,16 +23,13 @@
                     </div>
 
                     <div class="column">
-                        <p><strong>Id : </strong> 123456789</p>
+                        <p><strong>Id : </strong> {{Session.user.handle}}</p>
                     </div>
                     <div class="column">
-                        <p><strong>Email: </strong> username@gmail.com</p>
+                        <p><strong>Email: </strong> {{Session.user.emails}}</p>
                     </div>
                     <div class="column">
-                        <p><strong>Phone Number: </strong> 1234567893</p>
-                    </div>
-                    <div class="column">
-                        <p><strong>Address: </strong> 18 Address ave <br> NY 12561</p>
+                        <p><strong>Country: </strong>{{Session.user.country}}</P>
                     </div>
                 </div>
             </div>

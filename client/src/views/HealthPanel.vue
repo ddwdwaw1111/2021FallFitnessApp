@@ -13,7 +13,7 @@
                             </div>
                         </div>
                         <div class="column">
-                            <p><strong>Welcome,</strong> Username</p>
+                            <p><strong>Welcome,</strong> {{Session.user.firstName}} {{Session.user.lastName}}</p>
                             <a aria-label="report">
                                 <span class="icon is-small">
                       <i class="fas fa-pencil-alt" aria-hidden="true"></i>
@@ -23,17 +23,17 @@
                         </div>
 
                         <div class="column">
-                            <div><strong>Height : </strong> 5'11 feet
+                            <div><strong>Height : </strong> {{Session.user.healthProfile.Height}} feet
                             </div>
                         </div>
                         <div class="column">
-                            <p><strong>Weight: </strong> 200 lb</p>
+                            <p><strong>Weight: </strong> {{Session.user.healthProfile.Weight}} lb</p>
                         </div>
                         <div class="column">
-                            <p><strong>Age: </strong> 18</p>
+                            <p><strong>Age: </strong> {{Session.user.healthProfile.Age}}</p>
                         </div>
                         <div class="column">
-                            <p><strong>Sex: </strong> Male</p>
+                            <p><strong>Sex: </strong> {{Session.user.healthProfile.Sex}}</p>
                         </div>
 
                     </div>
@@ -114,14 +114,19 @@
 </template>
 
 <script>
+import Session from '../services/session'
 import chart from '../components/Charts.vue'
 export default {
     name:'HealthPanel',
-
     components:
     {
         chart
-    }
+    },
+    data:() => {
+        return {
+          Session      
+        }
+    },
 }
 </script>
 
