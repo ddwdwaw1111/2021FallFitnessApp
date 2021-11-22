@@ -3,17 +3,14 @@
           <router-link class="button is-primary" to="/signup">
             <strong>Sign up</strong>
           </router-link>
-          <router-link class="button is-light" to="/">
+          <router-link class="button is-light" to="signup" @click="login">
             Log in
           </router-link>
     </div>
     <div v-else>
-         <span class="navbar-item">
+         <span class="navbar-item is-tab">
              <strong>Hello,{{name}}</strong> 
          </span>
-         <router-link class="navbar-item button is-primary" to="/accountManage">
-        <strong>Manage Account</strong>
-        </router-link>
     </div>
 </template>
 

@@ -1,57 +1,37 @@
 <template>
-      <section class="section">
-        <div class="container">
-            <div class="column is-full has-text-centered">
-                <h1 class="title ">Login</h1>
-                <h2>
-                    username: @zihao
-                    password: password
-                </h2>
-            </div>
-
-            <div class="column is-one-third is-offset-one-third ">
-                <form class="box" @submit.prevent="login()">
-                    <div class="field">
-                        <p class="control">
-                            <input class="input" type="text" placeholder="Email" v-model="email">
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control">
-                            <input class="input" type="password" placeholder="Password" v-model="password">
-                        </p>
-                    </div>
-                     <div class="field">
-                     <p class="control has-text-centered">
-                          <button class="button is-success">
-                          Login
-                            </button>
-                     </p>
-                    </div>
-                </form>
-            </div>
-
-            <div class="column is-one-third is-offset-one-third">
-                <div class="box">
-                    <div class="columns is-multiline">
-                        <div class=" column is-full has-text-centered">
-                            <router-link to="/signup"> Create a new account</router-link>
-                        </div>
-                        <div class=" column is-full is-gapless has-text-centered">
-                            <router-link to="/forgetpassword"> Forget password</router-link>
-                    </div>
-                </div>
-            </div>
-    </div>
+  <form class="section" @submit.prevent="login()">
+      <div class="field">
+        <p class="control has-icons-left has-icons-right">
+            <input class="input" type="text" placeholder="Email" v-model="email">
+            <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+            </span>
+        </p>
         </div>
-    </section>
-
+        <div class="field">
+        <p class="control has-icons-left">
+            <input class="input" type="password" placeholder="Password" v-model="password">
+            <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+            </span>
+        </p>
+        </div>
+        <div class="field">
+        <p class="control">
+            <button class="button is-success">
+            Login
+            </button>
+        </p>
+        </div>
+  </form>
 </template>
 
 <script>
 import Session from "../services/session";
 export default {
-    name:'Login',
     data: ()=>({
         email: null,
         password: null,
@@ -63,12 +43,7 @@ export default {
         }
     }
 }
-
 </script>
 
 <style>
-        body {
-            background-color: rgb(250, 250, 250);
-            background-size: cover;
-        }
 </style>
