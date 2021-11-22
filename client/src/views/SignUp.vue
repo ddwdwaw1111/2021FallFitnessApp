@@ -94,6 +94,7 @@ export default {
         }
         else
         {
+            
                   this.Session.Register(this.user);
         }
 

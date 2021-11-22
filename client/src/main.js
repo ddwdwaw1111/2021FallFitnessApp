@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import '@fortawesome/fontawesome-free/css/all.css';
-import { ValidationProvider} from 'vee-validate';
 import 'bulma'
 
 import { Notification, Config } from '@oruga-ui/oruga-next'
@@ -11,7 +10,6 @@ import router from './router'
 
 createApp(App)
     .use(router)
-    .use(ValidationProvider)
     .use(Notification)
     .use(Config, {
         iconPack: 'fas'

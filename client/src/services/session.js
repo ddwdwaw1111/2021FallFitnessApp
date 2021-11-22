@@ -10,9 +10,20 @@ const session = {
 
         try {
             const response = await Register(user)
-            console.log(response)
             if(typeof(response) === "object")
+            {
             router.push(this.toRoute);
+            this.messages.push({text:'Successfully Registed for username: ' + user.handle, type:"success"})
+            NotificationProgrammatic.open({
+                duration: 5000,
+                message: 'Successfully Registed for username' + user.handle,
+                variant: 'success',
+                type: 'success',
+                closable: true,
+    
+            })
+            }
+
             
         } catch (error) {
             this.Error(error);
@@ -46,7 +57,7 @@ const session = {
 
         this.messages.push({ text: msg, type: 'warning' })
         NotificationProgrammatic.open({
-            duration: 5000,
+            duration: 2000,
             message: msg,
             variant: 'danger',
             type: 'danger',
