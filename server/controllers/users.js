@@ -26,7 +26,26 @@ app
             })
             .catch(next) 
     })
+    .patch("/addLog/:user_id", (req, res, next) =>{
+        model   .AddLog(req.params.user_id, req.body)
+                .then( x=> res.status(201).send(x) )
+                .catch(next)
+    })
     .patch("/:user_id", (req, res, next) =>{
+
+        model   .Update(req.params.user_id, req.body)
+                .then( user=> res.send(user) )
+                .catch(next) 
+
+    })
+    .patch("/updateTracker/:user_id", (req, res, next) =>{
+
+        model   .UpdateTracker(req.params.user_id, req.body)
+                .then( user=> res.send(user) )
+                .catch(next) 
+
+    })
+    .patch("/changePassword/:user_id", (req, res, next) =>{
 
         model   .Update(req.params.user_id, req.body)
                 .then( user=> res.send(user) )
@@ -66,9 +85,9 @@ app
             .catch(next) 
 
     })
-    .patch("/:follower/approve/:followee", (req, res, next) =>{
-
-        friends.Approve(req.params.follower, req.params.followee, req.body.shouldApprove)
+    .patch("/:follower/approve/:followee/", (req, res, next) =>{
+        console.log('controller'+ req.body.isApproved)
+        friends.Approve(req.params.follower, req.params.followee, req.body.isApproved)
             .then(response=>{
                 if(response.modifiedCount){
                     res.send({ success: true });                    
@@ -89,18 +108,13 @@ app
 
     })
     .post("/register", (req, res, next) =>{
-        model.Add(req.body.user)
+        console.log("controller" + req.body)
+        model.Add(req.body)
             .then(user=>{
                 res.status(201).send(user);
             })
             .catch(next) 
     })
-    .post("/seed", (req, res, next) =>{
-        model.Seed()
-            .then(user=>{
-                res.status(201).send("Created");
-            })
-            .catch(next) 
-    })
+
 
 module.exports = app;

@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Session from '../services/session';
 import Login from '../views/Login.vue'
-import SignUp from '../views/SignUp.vue'
+import Register from '../views/Register.vue'
 import HealthPanel from '../views/HealthPanel.vue'
 import ForgetPassword from '../views/ForgetPassword.vue'
 import AccountManage from '../views/AccountManage.vue'
 import Discover from '../views/Discover.vue'
+import publicPosts from '../views/publicPosts.vue'
 const routes = [
     {
         path: '/',
@@ -22,12 +23,12 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: Login
 }, {
-    path: '/signup',
-    name: 'SignUp',
+    path: '/Register',
+    name: 'Register',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: SignUp
+    component: Register
 }, {
     path: '/healthpanel',
     name: 'HealthPanel',
@@ -59,6 +60,15 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: Discover
+},
+{
+    path: '/public',
+    name: 'Public',
+    meta: { requiresLogin: true },
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: publicPosts
 }]
 
 const router = createRouter({

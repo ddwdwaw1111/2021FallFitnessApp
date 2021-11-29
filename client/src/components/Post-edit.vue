@@ -52,7 +52,7 @@ export default {
     },
     data(){
         return {
-            post: this.newPost
+            post: this.newPost,
         }
     },
     watch: {
@@ -60,7 +60,11 @@ export default {
             this.post = this.newPost;
         }
     }
-}
+  }
+    
+    
+
+
 </script>
 
 <style>

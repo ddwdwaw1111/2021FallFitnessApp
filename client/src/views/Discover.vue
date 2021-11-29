@@ -1,66 +1,84 @@
 <template>
   <div class="section">
-    <h1 class="title has-text-centered"> Share With Your Friend </h1>
-      
-      <div class="columns">
-        <div class="column">
+    <h1 class="title has-text-centered">Share With Your Friend</h1>
 
-            <post-edit :new-post="newPost" @add="add()" />
-
-            <div class="post" v-for=" (p, i) in posts" :key="p.src">
-                <post :post="p" @remove="remove(p, i)" />
-            </div>
-
-        </div>
-
-            <post :post="newPost" />
+    <div class="columns is-multiline">
+      <div class="column " v-if="posts.length < 1">
+        <n-empty
+          description="You don't have any posts and friends"
+        >
+          <template #icon>
+            <n-icon>
+              <SadTear/>
+            </n-icon>
+          </template>
+        </n-empty>
       </div>
-
-
+              <div class="column is-half" v-for="(d, i) in posts" :key="d.src">
+          <post :post="d" @remove="remove(d, i)" />
+        </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Post from '../components/Post.vue';
+import { NotificationProgrammatic } from "@oruga-ui/oruga-next/dist/esm/notification";
+import { SadTear } from '@vicons/fa'
+import { NEmpty, NIcon } from "naive-ui";
+import Post from "../components/Post.vue";
 import session from "../services/session";
-import { Add, Delete, GetFeed } from "../services/posts";
-import PostEdit from "../components/Post-edit.vue";
-const newPost = ()=> ({ user: session.user, user_handle: session.user.handle })
+import { Delete,GetFeed } from "../services/posts";
 export default {
-    components: {
-        Post,
-        PostEdit
+  components: {
+    Post,
+    NEmpty,
+    SadTear,
+    NIcon
+  },
+  data: () => ({
+    posts: [],
+    user: {},
+  }),
+  async mounted() {
+    this.posts = await GetFeed(session.user.handle);
+    await console.log("我是Friend" + this.posts.length)
+  },
+  methods: {
+    async remove(post, i) {
+      console.log( post.user_handle +"" + session.user.isAdmin);
+      if(post.user_handle === session.user.handle || session.user.isAdmin === true)
+      {
+        const response = await Delete(post._id);
+        if (response.deleted) {
+        this.posts.splice(i, 1);
+        NotificationProgrammatic.open({
+                duration: 5000,
+                message: 'Delete Successfully',
+                variant: 'success',
+                type: 'success',
+                closable: true,
+    
+            })
+      }
+      }else
+      {
+        console.log('delete fail')
+        // session.messages.push({text:'You are not the owner of this post or not an admin', type:"danger"})
+             NotificationProgrammatic.open({
+                duration: 5000,
+                message: 'You are not the owner of this post or not an admin',
+                variant: 'danger',
+                type: 'danger',
+                closable: true,
+    
+            })
+        
+      }
     },
-    data: ()=> ({
-        posts: [],
-        newPost: newPost()
-    }),
-    async mounted(){
-        this.posts = await GetFeed(session.user.handle)
-    },
-    methods: {
-        async remove(post, i){
-            console.log({post})
-            const response = await Delete(post._id)
-            if(response.deleted){
-                this.posts.splice(i, 1)
-            }
-        },
-        async add(){
-            console.log("Adding new post at " + new Date())
-            const response = await Add(this.newPost);
-            console.log({ response });
-            if(response){
-                this.posts.unshift(response);
-                this.newPost = newPost();
-            }
-        }
-    }
-}
+  },
+};
 </script>
 
 <style>
-    .card {
-        margin-bottom: 10px;
-    }
+
 </style>

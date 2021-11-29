@@ -11,8 +11,7 @@
             <div
               class="
                 navbar-item
-                has-background-grey-light
-                has-text-weight-semibold
+                has-background-grey-light has-text-weight-semibold
               "
             >
               Zihao's Fitness Tracker Logo
@@ -34,6 +33,13 @@
 
           <div class="navbar-menu" :class="{ 'is-active': isActive }">
             <div class="navbar-start" v-if="Session.user">
+              <router-link
+                class="navbar-item is-tab"
+                to="/public"
+                active-class="is-active"
+              >
+                <strong>Find More Friend</strong>
+              </router-link>
               <router-link
                 class="navbar-item is-tab"
                 to="/discover"
@@ -58,7 +64,6 @@
                 <strong>Manage Account</strong>
               </router-link>
             </div>
-
             <div class="navbar-end">
               <login-badge />
             </div>

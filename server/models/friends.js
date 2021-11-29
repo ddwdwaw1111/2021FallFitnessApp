@@ -1,13 +1,50 @@
-const { MongoClient } = require('mongodb');
+const { ObjectId } = require('bson');
+const { client } = require('./mongo');
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.kcret.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const collection = client.db(process.env.MONGO_DB).collection('users');
+module.exports.collection = collection;
 
+//  To get a list of who someone follows. Use the Users model
 
-const isConnected = client.connect();
+function Follow(follower, followee) {
+    return (
+        collection.updateOne(
+        { handle: follower, "following.handle": { $ne: followee} },
+        { $addToSet : { following: { handle: followee, isApproved: false } } },
+        collection.updateOne(
+        { handle: followee, "followee.handle": { $ne: follower} },
+        { $addToSet : { followee: { handle: follower, isApproved: false } } })
+        )
+    );
+}
+
+function UnFollow(follower, followee) {
+    return (
+        collection.updateOne(
+        { handle: follower },
+        { $pull : { following: { handle: followee } } },
+        collection.updateOne(
+            { handle: followee },
+            { $pull : { followee: { handle: follower } } }
+        )
+    )
+    );    
+}
+
+function Approve(follower, followee, shouldApprove) {
+    return (
+        collection.updateOne(
+        { handle: follower, "following.handle": followee },
+        { $set : { "following.$.isApproved": shouldApprove } },
+        collection.updateOne(
+        { handle: followee, "followee.handle": follower },
+        { $set : { "followee.$.isApproved": shouldApprove } })
+        )
+    );  
+}
+
 
 
 module.exports = {
-    client,
-    isConnected
+    Follow, UnFollow, Approve
 }

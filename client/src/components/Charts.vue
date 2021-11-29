@@ -1,20 +1,45 @@
+
 <script>
 import { Line } from 'vue3-chart-v2'
-
+import Session from '../services/session'
 export default {
-  name: 'TrackChart',
+  components: {
+    Session
+  },
+  data() {
+    return {
+      labelArray: [],
+      caloriesArray:[],
+      weightArray:[],
+    }
+  },
   extends: Line,
   mounted () {
-    // Overwriting base render method with actual data.
+    for(var i = 0 ; i < Session.user.calories.length; i++)
+    {
+      console.log(Session.user.calories[i].date);
+      this.labelArray.push(Session.user.calories[i].date)
+      this.caloriesArray.push(Session.user.calories[i].calorieBurned)
+      this.weightArray.push(Session.user.calories[i].weight)
+    }
+
     this.renderChart({
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+
+      labels: this.labelArray,
       datasets: [
         {
-                data: [140, 139, 140, 139, 139.5, 139.8, 138, 137,136,135,134,140],
-                label: "Weight",
-                borderColor: "#3e95cd",
+                data: this.caloriesArray,
+                label: "Calorie",
+                borderColor: "red",
                 backgroundColor: "#7bb6dd",
-                fill: false,
+                fill: false
+        },
+        {
+                data: this.weightArray,
+                label: "Weight",
+                borderColor: "blue",
+                backgroundColor: "#7bb6dd",
+                fill: false
         }
       ]
     })

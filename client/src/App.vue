@@ -3,7 +3,8 @@
         <div class="columns">
             <div class="column">
                 <Navbar />
-                <router-view/>                 
+                <router-view/>   
+                <Footer />              
             </div>
         </div>
        
@@ -15,10 +16,12 @@
 </style>
 
 <script>
+import Footer from "./components/Footer.vue"
 import Navbar from "./components/NavBar.vue";
 export default {
     components: {
         Navbar,
+        Footer
     }
 }
 </script>

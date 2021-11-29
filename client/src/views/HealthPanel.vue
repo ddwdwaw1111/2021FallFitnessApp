@@ -1,135 +1,89 @@
 <template>
-      <section class="section">
-        <div class="container">
+  <section class="section">
+    <div class="container">
+      <div class="columns is-multiline">
+                          <div class="column is-full has-text-centered">
+          <span class="title">Exercise Log</span>
+        </div>
+        <div class="column is-full has-text-centered">
+          <div class="box">
             <div class="columns is-multiline">
-                <div class="column is-full has-text-centered">
-                    <div class="box">
-                        <div class="columns is-multiline">
-                            <div class="column is-full">
-
-                                <figure class="image is-inline-block">
-                                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                                </figure>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <p><strong>Welcome,</strong> {{Session.user.firstName}} {{Session.user.lastName}}</p>
-                            <a aria-label="report">
-                                <span class="icon is-small">
-                      <i class="fas fa-pencil-alt" aria-hidden="true"></i>
-                    </span>
-                            </a>
-
-                        </div>
-
-                        <div class="column">
-                            <div><strong>Height : </strong> {{Session.user.healthProfile.Height}} feet
-                            </div>
-                        </div>
-                        <div class="column">
-                            <p><strong>Weight: </strong> {{Session.user.healthProfile.Weight}} lb</p>
-                        </div>
-                        <div class="column">
-                            <p><strong>Age: </strong> {{Session.user.healthProfile.Age}}</p>
-                        </div>
-                        <div class="column">
-                            <p><strong>Sex: </strong> {{Session.user.healthProfile.Sex}}</p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="column is-full has-text-centered">
-                    <span class="title">Exercise Log</span>
-                </div>
-                <div class="column is-full">
-                    <div class="card has-text-centered">
-                        <table class="table is-inline-block">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Working time</th>
-                                    <th>Working type</th>
-                                    <th>calorie burned</th>
-                                    <th>calorie cosumed</th>
-                                    <th>weight(lb)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>01/01/2021</th>
-                                    <td>45:00</td>
-                                    <td>Running</td>
-                                    <td>400 cal</td>
-                                    <td>2000 cal</td>
-                                    <td>140 lb</td>
-                                    <td><button class="button is-small is-black">edit </button></td>
-                                </tr>
-                                <tr>
-                                    <th>01/01/2021</th>
-                                    <td>45:00</td>
-                                    <td>Running</td>
-                                    <td>400 cal</td>
-                                    <td>2000 cal</td>
-                                    <td>140 lb</td>
-                                    <td><button class="button is-small is-black">edit </button></td>
-                                </tr>
-                                <tr>
-                                    <th>01/01/2021</th>
-                                    <td>45:00</td>
-                                    <td>Running</td>
-                                    <td>400 cal</td>
-                                    <td>2000 cal</td>
-                                    <td>140 lb</td>
-                                    <td><button class="button is-small is-black">edit </button></td>
-                                </tr>
-                                <tr>
-                                    <th>01/01/2021</th>
-                                    <td>45:00</td>
-                                    <td>Running</td>
-                                    <td>400 cal</td>
-                                    <td>2000 cal</td>
-                                    <td>140 lb</td>
-                                    <td><button class="button is-small is-black">edit </button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <div class="column is-full">
-                            <button class="button is-black">Add New Log </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-full has-text-centered">
-                    <span class="title">Weight Tracker</span>
-                </div>
-                <div class="column is-full">
-                    <chart />
-                </div>
+              <div class="column is-full">
+                <figure class="image is-inline-block">
+                  <img
+                    class="is-rounded"
+                    src="https://bulma.io/images/placeholders/128x128.png"
+                  />
+                </figure>
+              </div>
+            </div>
+            <div class="column">
+              <p>
+                <strong>
+                  {{ Session.user.firstName }}
+                  {{ Session.user.lastName }}
+                  </strong>
+              </p>
             </div>
 
+            <div class="column">
+              <div>
+                <strong>Height : </strong>
+                {{ Session.user.healthProfile.Height }} feet
+              </div>
+            </div>
+                        <div class="column">
+              <p>
+                <strong>Current Weight: </strong>
+                {{ Session.user.healthProfile.Weight }} lb
+              </p>
+            </div>
+            <div class="column">
+              <p>
+                <strong>Target Weight: </strong>
+                {{ Session.user.healthProfile.TargetWeight }} lb
+              </p>
+            </div>
+            <div class="column">
+              <p><strong>Age: </strong> {{ Session.user.healthProfile.Age }}</p>
+            </div>
+            <div class="column">
+              <p><strong>Sex: </strong> {{ Session.user.healthProfile.Sex }}</p>
+            </div>
+          </div>
         </div>
-    </section>
+
+        <div class="column is-full has-text-centered">
+          <span class="title">Tracker</span>
+        </div>
+        <div class="column is-full">
+          <Table />
+        </div>
+        <div class="column is-full">
+          <chart />
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-import Session from '../services/session'
-import chart from '../components/Charts.vue'
+import Session from "../services/session";
+import chart from "../components/Charts.vue";
+import Table from "../components/Calorie-table.vue";
+
 export default {
-    name:'HealthPanel',
-    components:
-    {
-        chart
-    },
-    data:() => {
-        return {
-          Session      
-        }
-    },
-}
+  components: {
+    chart,
+    Table
+  },
+  data: () => {
+    return {
+      Session
+    };
+  },
+};
 </script>
 
 <style>
-
 </style>

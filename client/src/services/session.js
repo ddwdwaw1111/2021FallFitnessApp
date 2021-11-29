@@ -13,7 +13,7 @@ const session = {
             if(typeof(response) === "object")
             {
             router.push(this.toRoute);
-            this.messages.push({text:'Successfully Registed for username: ' + user.handle, type:"success"})
+            this.messages.push({text:'Successfully Registed: ' + user.handle, type:"success"})
             NotificationProgrammatic.open({
                 duration: 5000,
                 message: 'Successfully Registed for username' + user.handle,
@@ -39,7 +39,8 @@ const session = {
             router.push(this.toRoute);
                 
         } catch (error) {
-            this.Error(error);
+            // this.Error(error);
+            console.log(error);
         }
     },
     async Logout(){

@@ -1,10 +1,9 @@
 <template>
-  <div class="column is-half">
+  <div class="column is-full" >
     <div class="card">
       <div class="card-image">
         <figure class="image is-4by3">
-          <img :src="post.src" :alt="post.alt" />
-          <button class="delete" @click="$emit('remove')"></button>
+          <img :src="post.src" :alt="post.alt" /> 
         </figure>
       </div>
       <div class="card-content">
@@ -19,7 +18,6 @@
               {{ post.user.firstName }} {{ post.user.lastName }}
             </p>
             <p class="subtitle is-6">
-              {{ post.user.handle }}
               <time :datetime="post.time">{{ prettyDate }}</time>
             </p>
           </div>
@@ -31,35 +29,64 @@
       </div>
 
       <footer class="card-footer">
-        <a href="#" class="card-footer-item"><i class="fas fa-flag"></i>Like</a>
-        <a href="#" class="card-footer-item">Share</a>
-        <a href="#" class="card-footer-item">Dislike</a>
+        <n-button  circle size="large" color="#32a8a6" dashed class="card-footer-item"  @click="$emit('follow')">Follow</n-button>
+        <n-button  circle size="large" color="#ff7086" class="card-footer-item" v-if="liked" @click="liked=!liked"> <template #icon>
+      <n-icon>
+        <heart />
+      </n-icon>
+    </template>Unlike</n-button>
+    <n-button  circle size="large" color="#ff7086" dashed class="card-footer-item" v-else @click="liked=!liked">Like</n-button>
+        <n-button  circle size="large" color="#636363" dashed class="card-footer-item" >Comments</n-button>
+        <n-button  circle size="large" color="#ff0000" dashed class="card-footer-item" @click="$emit('remove')">Delete</n-button>
       </footer>
     </div>
   </div>
 </template>
 
 <script>
+import {NButton, NIcon} from "naive-ui"
+import {Heart} from "@vicons/ionicons5"
 export default {
   props: {
     post: Object,
   },
+  data() {
+    return {
+      postOwner:this.post.user,
+      liked:false
+    }
+  },
+  components:
+  {
+    NButton,
+    Heart,
+    NIcon
+  },
   computed: {
     prettyDate() {
-      if (this.post.time && this.post.time.toDateString) {
-        return this.post.time.toDateString();
-      } else {
-        return "Never";
+      var postTime = new Date(this.post.time).toString()
+      console.log(postTime);
+      var index = postTime.indexOf("G")
+      if(~index) {
+        postTime = postTime.substr(0, index);
+        }
+      if(postTime === "Invalid Date"){
+        postTime = "1000 Years ago"
       }
+      return postTime
     },
+
   },
+  methods: {
+    hide(){
+      this.hidden = !this.hidden;
+      alert("This post is hidden for this session")
+    }
+  },
+  
 };
 </script>
 
 <style>
-button.delete {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
+
 </style>

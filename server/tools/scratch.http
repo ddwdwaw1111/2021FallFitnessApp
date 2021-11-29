@@ -1,10 +1,10 @@
 http://localhost:3100/users
 
 ###
-http://localhost:3100/users/1
+http://localhost:3100/users
 
 ###
-https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
+ https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
 
 ###
 POST http://localhost:3100/users/register
@@ -33,11 +33,11 @@ Content-Type: application/json
     }
 
 ###
-PATCH http://localhost:3100/users/6189d512e84c47b5a81dafe1
+PATCH http://localhost:3100/users/619bde02a9e0c79e861ac6f2
 Content-Type: application/json
 
 {
-    "firstName": "Joe 66"
+    "pic": "https://api.poets.org/sites/default/files/styles/poem_a_day_portrait/public/images/biographies/safia-elhillo_newbiophoto_2019_0.jpg?itok=ocU-Oc2f"
 }
 
 ###
@@ -90,7 +90,7 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://localhost:3100/posts/618cac0f347b76cc068f980e
+PATCH http://localhost:3100/posts/61a275bb845af8a088cf8ff7
 Content-Type: application/json
 
 {
@@ -125,3 +125,25 @@ DELETE  http://localhost:3100/posts/comments/619687bdb64f4cabade5bb1e
 
 ###
 POST http://localhost:3100/posts/seed
+###
+PATCH http://localhost:3100/users/61a30600eb694d59c1d3e7a1/changePassword
+
+Content-Type: application/json
+
+{
+    "password": 111
+}
+###
+PATCH http://localhost:3100/users/61a30600eb694d59c1d3e7a1
+
+Content-Type: application/json
+
+{
+   calories: [{
+        date: "0",
+        exerciseTime: "",
+        exerciseType: "",
+        calorieBurned: "0",
+        weight: "0"
+    }]
+}
