@@ -36,7 +36,6 @@
       </n-icon>
     </template>Unlike</n-button>
     <n-button  circle size="large" color="#ff7086" dashed class="card-footer-item" v-else @click="liked=!liked">Like</n-button>
-        <n-button  circle size="large" color="#636363" dashed class="card-footer-item" >Comments</n-button>
         <n-button  circle size="large" color="#ff0000" dashed class="card-footer-item" @click="$emit('remove')">Delete</n-button>
       </footer>
     </div>

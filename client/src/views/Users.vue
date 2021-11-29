@@ -1,7 +1,6 @@
 <template>
     <div class="about">
-        <h1 class="title">Users Page</h1>
-        <h2 class="subtitle">Should be accesible only to admins</h2>
+        <h1 class="title">Users Manage Page</h1>
 
         <table class="table is-striped is-hoverable is-fullwidth">
             <thead>
@@ -17,7 +16,7 @@
             </thead>
 
             <tbody>
-                <tr v-for="u in list" :key="u.handle">
+                <tr v-for="(u,i) in list" :key="u.handle" > 
                     <th>{{ u.firstName }}</th>
                     <th>{{ u.lastName }}</th>
                     <td>{{ u.handle }}</td>
@@ -26,22 +25,13 @@
                     </td>
                     <td>{{ u.isAdmin }}</td>
                     <td>
-                        <a href="">Emails</a> <br />
-                        <a href="">Friends</a>
-                    </td>
-                    <td>
                         <p class="buttons">
-                            <button class="button">
+                            <button class="button" @click='changeRole(u,i)'>
                                 <span class="icon is-small">
-                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-edit" ></i>
                                 </span>
                             </button>
-                            <button class="button">
-                                <span class="icon is-small">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                            </button>
-                            <button class="button">
+                            <button class="button" @click='deleteUser(u,i)'>
                                 <span class="icon is-small">
                                     <i class="fas fa-trash"></i>
                                 </span>
@@ -55,15 +45,36 @@
 </template>
 
 <script>
-import {  GetAll } from "../services/users"
+import {  GetAll,Update, Delete } from "../services/users"
 export default {
     data() {
         return {
-            list: []
+            list: [],
+            user:{isAdmin: false}
         }
     },
     async mounted(){
         this.list = await GetAll();
-    }
+    },
+    methods: {
+        async changeRole(u,i)
+        {
+            this.list[i].isAdmin = !this.list[i].isAdmin
+            this.user.isAdmin = this.list[i].isAdmin
+            console.log(this.user.isAdmin)
+            const response = await Update(u._id, this.user);
+            console.log(response)
+        },
+        async deleteUser(u,i)
+        {
+            const response = await Delete(u._id);
+            if(response.deleted)
+            {
+            this.list.splice(i,1)
+            console.log(response)
+            }
+
+        }
+    },
 }
 </script>

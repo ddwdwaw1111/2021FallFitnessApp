@@ -7,6 +7,7 @@ import ForgetPassword from '../views/ForgetPassword.vue'
 import AccountManage from '../views/AccountManage.vue'
 import Discover from '../views/Discover.vue'
 import publicPosts from '../views/publicPosts.vue'
+import Users from '../views/Users.vue'
 const routes = [
     {
         path: '/',
@@ -69,6 +70,15 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: publicPosts
+},
+{
+    path: '/admin',
+    name: 'Admin',
+    meta: { requiresLogin: true },
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: Users
 }]
 
 const router = createRouter({

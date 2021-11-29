@@ -84,7 +84,7 @@ module.exports.ChangePassword = async function Update(user_id, password) {
 
 
 module.exports.Delete = async function Delete(user_id) {
-    const results = await collection.findOneAndDelete({_id: new ObjectId(user_id) })
+    const results = await collection.findAndDelete({_id: new ObjectId(user_id) })
 
     return results.value;
 }

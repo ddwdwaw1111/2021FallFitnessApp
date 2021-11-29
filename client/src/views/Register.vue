@@ -162,8 +162,8 @@
               </div>
               <div class="select">
                 <select v-model="user.isAdmin">
-                  <option value="true">Yes</option>
-                  <option value="false">No</option>
+                  <option value=true>Yes</option>
+                  <option value=false>No</option>
                 </select>
               </div>
             </div>

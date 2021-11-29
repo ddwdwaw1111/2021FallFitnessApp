@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-    <h1 class="title has-text-centered">Share With Your Friend</h1>
+    <h1 class="title has-text-centered">Find More Friends</h1>
 
     <div class="columns is-multiline">
       <div class="column" v-if="posts.length < 1">

@@ -43,7 +43,15 @@
             <span class="subtitle has-text-weight-bold"> Following</span>
           </div>
           <div class="columns is-multiline">
-          <n-empty
+          <following
+            v-for="(f, i) in followingList"
+            :key="i"
+            :following="f"
+            @unfollow="unfollow(f, i)"
+          />
+          
+          </div>
+                    <n-empty
             description="Go find some friends" 
             v-if="followingList.length < 1"
           >
@@ -53,15 +61,6 @@
               </n-icon>
             </template>
           </n-empty>
-
-          <following
-          v-else
-            v-for="(f, i) in followingList"
-            :key="i"
-            :following="f"
-            @unfollow="unfollow(f, i)"
-          />
-          </div>
         </div>
       </div>
 
@@ -70,7 +69,15 @@
           <div class="column is-full">
             <span class="subtitle has-text-weight-bold"> Follower</span>
           </div>
-          <n-empty
+          <div class="columns is-multiline">
+          <follower
+            v-for="(f, i) in followeeList"
+            :key="i"
+            :follower="f"
+            @approve="approve(f, i)"
+          />
+          </div>
+                    <n-empty
             description="Sad, you don't have any follower"
             v-if="followeeList.length < 1"
           >
@@ -80,13 +87,6 @@
               </n-icon>
             </template>
           </n-empty>
-          <follower
-          v-else
-            v-for="(f, i) in followeeList"
-            :key="i"
-            :follower="f"
-            @approve="approve(f, i)"
-          />
         </div>
       </div>
       <div class="column is-full">
@@ -170,11 +170,6 @@
                   @click="InfoActive = !InfoActive"
                 ></button>
               </div>
-            </div>
-            <div class="column is-full">
-              <button class="has-text-weight-bold button is-danger">
-                Change your password
-              </button>
             </div>
           </div>
         </div>

@@ -63,6 +63,14 @@
               >
                 <strong>Manage Account</strong>
               </router-link>
+                            <router-link
+                class="navbar-item is-tab"
+                to="/admin"
+                v-if="Session.user.isAdmin"
+                active-class="is-active"
+              >
+                <strong>Admin</strong>
+              </router-link>
             </div>
             <div class="navbar-end">
               <login-badge />
